@@ -16,9 +16,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("ShopNest Backend is up and running!");
-});
 connectDB();
 
 app.use("/api/auth", require("./routes/authRoutes.js"));
@@ -27,17 +24,11 @@ app.use("/api/orders", require("./routes/orderRoutes.js"));
 app.use("/api/payment", require("./routes/paymentRoutes.js"));
 app.use("/api/analytics", require("./routes/analyticsRoutes.js"));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("ShopNest API is running...");
-  });
-}
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {
