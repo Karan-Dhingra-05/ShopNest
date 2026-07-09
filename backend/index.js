@@ -26,6 +26,18 @@ app.use("/api/orders", require("./routes/orderRoutes.js"));
 app.use("/api/payment", require("./routes/paymentRoutes.js"));
 app.use("/api/analytics", require("./routes/analyticsRoutes.js"));
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  app.use((req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("ShopNest API is running in Development mode...");
+  });
+}
+
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
