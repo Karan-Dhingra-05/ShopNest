@@ -1,0 +1,610 @@
+{
+  "info": {
+    "_postman_id": "6cc76690-bdd0-4b51-a1d7-a74776ab7abd",
+    "name": "ShopNest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53688650",
+    "_collection_link": "https://go.postman.co/collection/53688650-6cc76690-bdd0-4b51-a1d7-a74776ab7abd?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\":\"Test\",\n    \"email\":\"test2@gmail.com\",\n    \"password\":\"test@123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/auth/register",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/auth/login",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ADMIN-Get all users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_17qm}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/auth/users",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ServerHealth",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{endpoint}}/",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Get all Products",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_17qm}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/products/",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get one Product",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_17qm}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/products/6a44d24a4702e7f00ef964c0",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "6a44d24a4702e7f00ef964c0"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ADMIN - Create Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNDM3MzE4ZTg4YWRmNTI0ZDhkN2U3YyIsImlhdCI6MTc4Mjg5MDg1OSwiZXhwIjoxNzgzNDk1NjU5fQ.7TMKCWxC41VFh-n1EIXb06ty2HCtCaatuYMXTXH_mA4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <your_token>"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "type": "text",
+                  "key": "name",
+                  "value": "Sample Product 2"
+                },
+                {
+                  "type": "text",
+                  "key": "description",
+                  "value": "This is a sample product description."
+                },
+                {
+                  "type": "text",
+                  "key": "price",
+                  "value": "200"
+                },
+                {
+                  "type": "text",
+                  "key": "category",
+                  "value": "Electronics"
+                },
+                {
+                  "type": "text",
+                  "key": "stock",
+                  "value": "500"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "521cd867-064c-4319-96d3-b16e94760d84",
+                  "src": "/Users/karan/Downloads/WhatsApp Image 2025-11-21 at 16.30.23.jpeg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/products/",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST 'http://localhost:5002/api/products' \\\n--header 'Authorization: Bearer <your_token>' \\\n--form 'name=\"Sample Product\"' \\\n--form 'price=\"99.99\"' \\\n--form 'description=\"This is a sample product description.\"' \\\n--form 'category=\"Electronics\"' \\\n--form 'brand=\"Sample Brand\"' \\\n--form 'stock=\"50\"'"
+          },
+          "response": []
+        },
+        {
+          "name": "ADMIN - Update Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNDM3MzE4ZTg4YWRmNTI0ZDhkN2U3YyIsImlhdCI6MTc4Mjg5MDg1OSwiZXhwIjoxNzgzNDk1NjU5fQ.7TMKCWxC41VFh-n1EIXb06ty2HCtCaatuYMXTXH_mA4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <your_token>"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "type": "text",
+                  "key": "name",
+                  "value": "Laptop"
+                },
+                {
+                  "type": "text",
+                  "key": "description",
+                  "value": "This is a Laptop."
+                },
+                {
+                  "type": "text",
+                  "key": "price",
+                  "value": "80000"
+                },
+                {
+                  "type": "text",
+                  "key": "category",
+                  "value": "Electronics"
+                },
+                {
+                  "type": "text",
+                  "key": "stock",
+                  "value": "50"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "521cd867-064c-4319-96d3-b16e94760d84",
+                  "src": "/Users/karan/Downloads/WhatsApp Image 2025-11-21 at 16.30.23.jpeg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/products/6a44d34b4702e7f00ef964c1",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "6a44d34b4702e7f00ef964c1"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST 'http://localhost:5002/api/products' \\\n--header 'Authorization: Bearer <your_token>' \\\n--form 'name=\"Sample Product\"' \\\n--form 'price=\"99.99\"' \\\n--form 'description=\"This is a sample product description.\"' \\\n--form 'category=\"Electronics\"' \\\n--form 'brand=\"Sample Brand\"' \\\n--form 'stock=\"50\"'"
+          },
+          "response": []
+        },
+        {
+          "name": "ADMIN - Delete Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNDM3MzE4ZTg4YWRmNTI0ZDhkN2U3YyIsImlhdCI6MTc4Mjg5MDg1OSwiZXhwIjoxNzgzNDk1NjU5fQ.7TMKCWxC41VFh-n1EIXb06ty2HCtCaatuYMXTXH_mA4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <your_token>"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "type": "text",
+                  "key": "name",
+                  "value": "Sample Product 2"
+                },
+                {
+                  "type": "text",
+                  "key": "description",
+                  "value": "This is a sample product description."
+                },
+                {
+                  "type": "text",
+                  "key": "price",
+                  "value": "200"
+                },
+                {
+                  "type": "text",
+                  "key": "category",
+                  "value": "Electronics"
+                },
+                {
+                  "type": "text",
+                  "key": "stock",
+                  "value": "500"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "521cd867-064c-4319-96d3-b16e94760d84",
+                  "src": "/Users/karan/Downloads/WhatsApp Image 2025-11-21 at 16.30.23.jpeg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/products/6a44d38bbd5abad5b4060efc",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "6a44d38bbd5abad5b4060efc"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST 'http://localhost:5002/api/products' \\\n--header 'Authorization: Bearer <your_token>' \\\n--form 'name=\"Sample Product\"' \\\n--form 'price=\"99.99\"' \\\n--form 'description=\"This is a sample product description.\"' \\\n--form 'category=\"Electronics\"' \\\n--form 'brand=\"Sample Brand\"' \\\n--form 'stock=\"50\"'"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Place A Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN_HERE"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [{\"productId\":\"PRODUCT_ID\",\"qty\":2,\"price\":99.99}],\n  \"totalAmount\":199.98,\n  \"address\":{\n    \"fullName\":\"John Doe\",\n    \"street\":\"123 Main Street\",\n    \"city\":\"New York\",\n    \"postalCode\":\"10001\",\n    \"country\":\"United States\"\n  },\n  \"paymentId\":\"pay_123456789\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/orders",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ADMIN -- ALL ORDERS",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN_HERE"
+              }
+            ],
+            "url": {
+              "raw": "{{endpoint}}/api/orders",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ADMIN -- Update ORDER Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN_HERE"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"shipped\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/orders/ORDER_ID/status",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "ORDER_ID",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN_HERE"
+              }
+            ],
+            "url": {
+              "raw": "{{endpoint}}/api/orders/myorders",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "myorders"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "ADMIN - Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN_HERE"
+              }
+            ],
+            "url": {
+              "raw": "{{endpoint}}/api/orders/myorders",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "myorders"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "endpoint",
+      "value": ""
+    }
+  ]
+}
