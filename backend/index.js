@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
+const path = require("path");
 
 dotenv.config();
 
@@ -27,14 +28,14 @@ app.use("/api/payment", require("./routes/paymentRoutes.js"));
 app.use("/api/analytics", require("./routes/analyticsRoutes.js"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.use((req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
   });
 } else {
   app.get("/", (req, res) => {
-    res.send("ShopNest API is running in Development mode...");
+    res.send("ShopNest API is running...");
   });
 }
 
