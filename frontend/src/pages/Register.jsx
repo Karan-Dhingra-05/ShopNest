@@ -1,32 +1,41 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
       });
-      if (res.ok) {
-        const data = await res.json();
-        login(data);
-        navigate("/");
-        alert(data.message);
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return alert(data.message);
       }
+
+      alert(data.message);
+
+      localStorage.setItem("verifyEmail", data.email);
+
+      navigate("/verify-otp");
     } catch (error) {
       console.error(error);
       alert("Registration failed. Please try again.");

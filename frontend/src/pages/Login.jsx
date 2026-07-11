@@ -25,11 +25,21 @@ const Login = () => {
       if (res.ok) {
         login(data);
         navigate("/");
-      } else {
-        alert(data.message);
+        return;
       }
+      if (res.status === 403) {
+        localStorage.setItem("verifyEmail", data.email);
+
+        alert(data.message);
+
+        navigate("/verify-otp");
+        return;
+      }
+
+      alert(data.message);
     } catch (error) {
       console.error(error);
+      alert("Something went wrong. Please try again.");
     }
   };
 

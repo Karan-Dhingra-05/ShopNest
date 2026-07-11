@@ -20,6 +20,7 @@ import AddProduct from "./admin/AddProduct";
 import EditProduct from "./admin/EditProduct";
 import AdminOrders from "./admin/AdminOrders";
 import AdminUsers from "./admin/AdminUsers";
+import VerifyOTP from "./pages/VerifyOTP";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/shop" element={<Shop />} />
           <Route path="/ordersuccess" element={<OrderSuccess />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/verify-otp" element={<VerifyOTP />} />
 
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminDashboard />} />
